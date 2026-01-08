@@ -1,0 +1,90 @@
+/* Global Styles */
+
+:root {
+    /* Editorial Dark Palette */
+    --background: #0f0f0f;
+    /* Deep Charcoal */
+    --foreground: #f0f0f0;
+    /* Soft White */
+    --primary: #ffffff;
+    --secondary: #888888;
+    --accent: #d4d4d4;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --grid-line: rgba(255, 255, 255, 0.05);
+
+    --font-sans: var(--font-inter);
+    --font-serif: var(--font-playfair);
+
+    --max-width: 1400px;
+    --header-height: 80px;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+body {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--primary);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--secondary);
+}
+
+/* Utility Classes */
+.display-text {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-family: var(--font-serif);
+    letter-spacing: -0.03em;
+}
+
+.thin-border {
+    border: 1px solid var(--border-color);
+}
+
+.uppercase-tracking {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 4px;
+}
