@@ -23,11 +23,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { getProjectImages } from '@/app/actions/getProjectImages';
 
+
 interface Project {
     title: string;
     image: string; // cover image
-    link?: string;
-    // Add other fields if necessary
+    link?: string | null;
+    galleryImages?: string[]; // from database
 }
 
 interface ProjectGalleryModalProps {
@@ -76,19 +77,35 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
     useEffect(() => {
         if (isOpen && project) {
             setIsLoading(true);
-            const folderPath = project.image.substring(0, project.image.lastIndexOf('/'));
 
-            getProjectImages(folderPath).then((fetchedImages) => {
-                if (fetchedImages.length > 0) {
-                    const coverIndex = fetchedImages.findIndex(img => img === project.image);
-                    setImages(fetchedImages);
-                    setCurrentIndex(coverIndex >= 0 ? coverIndex : 0);
-                } else {
-                    setImages([project.image]);
-                    setCurrentIndex(0);
-                }
+            // If project has galleryImages from database, use those
+            if (project.galleryImages && project.galleryImages.length > 0) {
+                // Combine cover image with gallery images
+                const allImages = [project.image, ...project.galleryImages];
+                setImages(allImages);
+                setCurrentIndex(0);
                 setIsLoading(false);
-            });
+            } else if (project.image.startsWith('/projects/')) {
+                // Legacy: fetch from filesystem for local projects
+                const folderPath = project.image.substring(0, project.image.lastIndexOf('/'));
+
+                getProjectImages(folderPath).then((fetchedImages) => {
+                    if (fetchedImages.length > 0) {
+                        const coverIndex = fetchedImages.findIndex(img => img === project.image);
+                        setImages(fetchedImages);
+                        setCurrentIndex(coverIndex >= 0 ? coverIndex : 0);
+                    } else {
+                        setImages([project.image]);
+                        setCurrentIndex(0);
+                    }
+                    setIsLoading(false);
+                });
+            } else {
+                // Just the cover image
+                setImages([project.image]);
+                setCurrentIndex(0);
+                setIsLoading(false);
+            }
         }
     }, [isOpen, project]);
 

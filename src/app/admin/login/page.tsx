@@ -67,6 +67,7 @@ export default function LoginPage() {
                             name="password"
                             required
                             className={styles.input}
+                            suppressHydrationWarning={true}
                         />
                     </div>
 

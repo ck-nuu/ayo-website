@@ -11,147 +11,17 @@ type Discipline = 'Modelling' | 'Music' | 'Poetry';
 interface Project {
     id: string;
     title: string;
-    discipline: Discipline;
+    discipline: string;
     subcategory: string;
     year: string;
     image: string;
+    link?: string | null;
+    galleryImages?: string[];
 }
 
-// Portfolio projects data
-const projects: Project[] = [
-    // Modelling - Commercial/E-com (formerly Commercial & Campaign)
-    {
-        id: 'wishtrend-2024',
-        title: 'Wishtrend Bakuchiol Line',
-        discipline: 'Modelling',
-        subcategory: 'Commercial/E-com',
-        year: '2024',
-        image: '/projects/2024-02_Wishtrend_Bakuchiol_Line/Model Ayo 01.jpg',
-    },
-    {
-        id: 'queen-slim-2020',
-        title: 'Queen & Slim "We Are Here"',
-        discipline: 'Modelling',
-        subcategory: 'Commercial/E-com',
-        year: '2020',
-        image: '/projects/2020-01_Queen_&_Slim_We_Are_Here/Q&S-WAH-G1-1.jpg',
-    },
-    // Modelling - Editorial
-    {
-        id: 'new-wave-2024',
-        title: 'New Wave Mag x Galacta Ag',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2024',
-        image: '/projects/2024-05_New_Wave_Mag_and_Galacta_Ag/39.jpg',
-    },
-    {
-        id: 'we-gang-young-2023',
-        title: 'We Gang Young',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2023',
-        image: '/projects/2023-11_We_Gang_Young/temp_1716670074768.619391964.jpeg',
-    },
-    {
-        id: 'chae-jiwon-2023',
-        title: 'Chae Jiwon Photography',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2023',
-        image: '/projects/2023-10_Chae_Jiwon_Photography_(최지원)/AY5A9400.jpg',
-    },
-    {
-        id: 'kiuna-kim-2023',
-        title: 'Kiuna Kim Photography',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2023',
-        image: '/projects/2023-05_Kiuna_Kim_Photography/ayo-15.jpg',
-    },
-    {
-        id: 'tune-zine-2023',
-        title: 'TUNE Zine',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2023',
-        image: '/projects/2023-03_TUNE_zine/IMG_20230312_131037.jpg',
-    },
-    {
-        id: 'sam-marvell-2019',
-        title: 'Sam Marvell Photography',
-        discipline: 'Modelling',
-        subcategory: 'Beauty',
-        year: '2019',
-        image: '/projects/2019-12_Sam_Marvell_Photography/Afrodite.jpg',
-    },
-    {
-        id: 'cat-norris-2019',
-        title: 'Cat Norris',
-        discipline: 'Modelling',
-        subcategory: 'Beauty',
-        year: '2019',
-        image: '/projects/2019-09_Cat_Norris/IMG_20190923_154803.jpg',
-    },
-    {
-        id: 'vague-2019',
-        title: 'VAGUE Presents',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2019',
-        image: '/projects/2019-07_VAGUE_presents/VAGUE presents Judah virtual exhibition 11.png',
-    },
-    {
-        id: 'katie-maddren-2019',
-        title: 'Katie Maddren',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2019',
-        image: '/projects/2019-05_Katie_Maddren/KATIE_M_MP_05_0534_FINAL.jpg',
-    },
-    {
-        id: 'emmanuel-2019',
-        title: 'Emmanuel Photography',
-        discipline: 'Modelling',
-        subcategory: 'Editorial',
-        year: '2019',
-        image: '/projects/2019-04_Emmanuel_Photography/image00011.jpeg',
-    },
-    // Music
-    {
-        id: 'music-sample-1',
-        title: 'Original Composition',
-        discipline: 'Music',
-        subcategory: 'Lead',
-        year: '2024',
-        image: '/projects/2023-05_Kiuna_Kim_Photography/ayo-15.jpg', // Placeholder
-    },
-    {
-        id: 'maizani-slow-2023',
-        title: 'Slow (feat. AYO) - Maizani',
-        discipline: 'Music',
-        subcategory: 'Features',
-        year: '2023',
-        image: '/projects/2023-05_Kiuna_Kim_Photography/ayo-15.jpg', // Placeholder
-    },
-    // Poetry (Placeholders)
-    {
-        id: 'poetry-sample-1',
-        title: 'Selected Works Vol. 1',
-        discipline: 'Poetry',
-        subcategory: 'Selected Works',
-        year: '2023',
-        image: '/projects/2019-12_Sam_Marvell_Photography/image00001.jpeg', // Placeholder
-    },
-    {
-        id: 'poetry-sample-2',
-        title: 'Spoken Word Performance',
-        discipline: 'Poetry',
-        subcategory: 'Voice',
-        year: '2024',
-        image: '/projects/2023-11_We_Gang_Young/image00001.jpeg', // Placeholder
-    }
-];
+interface PortfolioClientProps {
+    projects: Project[];
+}
 
 const taxonomy = {
     Modelling: ['All', 'Editorial', 'Commercial/E-com', 'Beauty'],
@@ -159,7 +29,7 @@ const taxonomy = {
     Poetry: ['All', 'Published', 'Selected Works', 'Voice'],
 };
 
-export default function PortfolioClient() {
+export default function PortfolioClient({ projects }: PortfolioClientProps) {
     const [activeDiscipline, setActiveDiscipline] = useState<Discipline>('Modelling');
     const [activeSubcategory, setActiveSubcategory] = useState('All');
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -167,7 +37,7 @@ export default function PortfolioClient() {
 
     const handleDisciplineChange = (discipline: Discipline) => {
         setActiveDiscipline(discipline);
-        setActiveSubcategory('All'); // Reset subcategory when switching discipline
+        setActiveSubcategory('All');
     };
 
     const filteredProjects = projects.filter(project => {
@@ -216,7 +86,7 @@ export default function PortfolioClient() {
                             {activeDiscipline === discipline && (
                                 <span style={{
                                     position: 'absolute',
-                                    bottom: '-1rem', // Aligns with the border-bottom of the container
+                                    bottom: '-1rem',
                                     left: 0,
                                     width: '100%',
                                     height: '2px',
@@ -269,7 +139,7 @@ export default function PortfolioClient() {
                         }}
                         style={{
                             display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', // Responsive 3-col logic
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
                             gap: '2rem',
                             marginBottom: '6rem'
                         }}
@@ -293,13 +163,13 @@ export default function PortfolioClient() {
                                         setIsModalOpen(true);
                                     }
                                 }}
-                                className="group" // For hover effects
+                                className="group"
                                 style={{
                                     position: 'relative',
-                                    aspectRatio: '16/10', // Landscape: "Long side at bottom"
+                                    aspectRatio: '16/10',
                                     overflow: 'hidden',
                                     cursor: 'pointer',
-                                    borderRadius: '16px', // Rounded corners
+                                    borderRadius: '16px',
                                     background: 'rgba(255,255,255,0.02)',
                                     isolation: 'isolate'
                                 }}
@@ -312,13 +182,13 @@ export default function PortfolioClient() {
                                     style={{ objectFit: 'cover' }}
                                 />
 
-                                {/* Overlay Gradient - Always visible at bottom but subtle */}
+                                {/* Overlay Gradient */}
                                 <div style={{
                                     position: 'absolute',
                                     bottom: 0,
                                     left: 0,
                                     right: 0,
-                                    top: '40%', // Start gradient further down
+                                    top: '40%',
                                     background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
                                     zIndex: 2,
                                     pointerEvents: 'none'

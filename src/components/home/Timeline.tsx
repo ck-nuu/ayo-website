@@ -4,24 +4,40 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './Timeline.module.css';
-import { timelineData } from './timelineData';
 import ProjectGalleryModal from '@/components/ProjectGalleryModal';
 
-export default function Timeline() {
-    const [selectedProject, setSelectedProject] = useState<typeof timelineData[0] | null>(null);
+interface TimelineProject {
+    date: string;
+    title: string;
+    role: string;
+    link?: string | null;
+    image: string;
+    galleryImages?: string[];
+}
+
+interface TimelineProps {
+    projects: TimelineProject[];
+}
+
+export default function Timeline({ projects }: TimelineProps) {
+    const [selectedProject, setSelectedProject] = useState<TimelineProject | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleProjectClick = (project: typeof timelineData[0]) => {
+    const handleProjectClick = (project: TimelineProject) => {
         setSelectedProject(project);
         setIsModalOpen(true);
     };
+
+    if (projects.length === 0) {
+        return null;
+    }
 
     return (
         <section className={styles.timelineSection}>
             <h2 className={styles.sectionTitle}>Featured Projects</h2>
 
             <div className={styles.timelineGrid}>
-                {timelineData.map((item, index) => (
+                {projects.map((item, index) => (
                     <motion.div
                         key={index}
                         className={styles.item}

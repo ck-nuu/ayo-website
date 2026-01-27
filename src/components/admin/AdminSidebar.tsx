@@ -11,6 +11,7 @@ const navItems = [
     { label: 'Contacts', href: '/admin/contacts' },
     { label: 'Bookings', href: '/admin/bookings' },
     { label: 'Subscribers', href: '/admin/subscribers' },
+    { label: 'Portfolio', href: '/admin/portfolio' },
 ];
 
 export default function AdminSidebar() {
