@@ -20,6 +20,19 @@ const TikTokIcon = () => (
     </svg>
 );
 
+const PinterestIcon = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="none"
+    >
+        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.853-2.435-4.589 0-3.797 2.75-7.29 7.923-7.29 4.15 0 7.377 2.962 7.377 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z" />
+    </svg>
+);
+
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -36,7 +49,7 @@ export default function Footer() {
                             style={{ objectFit: 'contain' }}
                         />
                         <p className={styles.description}>
-                            Model, Singer, and Poet. <br />
+                            Poet, Singer, and Model. <br />
                             "Who says I've got to move hasty? I'd rather take it easy."
                         </p>
                     </div>
@@ -56,6 +69,7 @@ export default function Footer() {
                         <div className={styles.links}>
                             <a href="https://www.instagram.com/ayomid_night/" target="_blank" rel="noopener noreferrer" className={styles.link}>Instagram</a>
                             <a href="https://www.tiktok.com/@ayomidknight" target="_blank" rel="noopener noreferrer" className={styles.link}>TikTok</a>
+                            <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" rel="noopener noreferrer" className={styles.link}>Pinterest</a>
                             <a href="https://www.linkedin.com/in/ayomide-abolaji-624840199" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
                         </div>
                     </div>
@@ -77,6 +91,9 @@ export default function Footer() {
                         </a>
                         <a href="https://www.tiktok.com/@ayomidknight" aria-label="TikTok">
                             <TikTokIcon />
+                        </a>
+                        <a href="https://www.pinterest.co.uk/ayomideabolaji/" aria-label="Pinterest">
+                            <PinterestIcon />
                         </a>
                         <a href="https://www.linkedin.com/in/ayomide-abolaji-624840199" aria-label="LinkedIn">
                             <Linkedin size={20} />

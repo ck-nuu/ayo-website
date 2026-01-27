@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+
 import { Instagram } from 'lucide-react';
+import SocialFeeds from './SocialFeeds';
 
 export const metadata: Metadata = {
     title: 'Media Hub | Ayomide Abolaji',
@@ -24,18 +25,24 @@ const TikTokIcon = () => (
     </svg>
 );
 
+const PinterestIcon = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="none"
+    >
+        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.853-2.435-4.589 0-3.797 2.75-7.29 7.923-7.29 4.15 0 7.377 2.962 7.377 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z" />
+    </svg>
+);
+
 // Sample video from Wishtrend project
 const videoUrl = '/projects/2024-02_Wishtrend_Bakuchiol_Line/WhatsApp Video 2024-02-26 at 15.22.03.mp4';
 
 // Gallery images for the media page
-const galleryImages = [
-    '/projects/2023-05_Kiuna_Kim_Photography/ayo-15.jpg',
-    '/projects/2023-05_Kiuna_Kim_Photography/ayo-47.jpg',
-    '/projects/2023-05_Kiuna_Kim_Photography/ayo-65.jpg',
-    '/projects/2023-05_Kiuna_Kim_Photography/ayo-72.jpg',
-    '/projects/2024-02_Wishtrend_Bakuchiol_Line/Model Ayo 02.jpg',
-    '/projects/2024-02_Wishtrend_Bakuchiol_Line/Model Ayo 03.jpg',
-];
+
 
 export default function MediaPage() {
     return (
@@ -78,33 +85,9 @@ export default function MediaPage() {
                     </div>
                 </section>
 
-                {/* Photo Gallery */}
-                <section style={{ marginBottom: '6rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '2rem' }}>Gallery</h2>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '1rem'
-                    }}>
-                        {galleryImages.map((img, i) => (
-                            <div
-                                key={i}
-                                style={{
-                                    position: 'relative',
-                                    aspectRatio: '1/1',
-                                    overflow: 'hidden'
-                                }}
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Gallery image ${i + 1}`}
-                                    fill
-                                    style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </section>
+
+
+                <SocialFeeds />
 
                 {/* Social Links */}
                 <section style={{
@@ -153,6 +136,24 @@ export default function MediaPage() {
                         >
                             <TikTokIcon />
                             <span>TikTok</span>
+                        </a>
+                        <a
+                            href="https://www.pinterest.co.uk/ayomideabolaji/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                padding: '1rem 2rem',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                color: 'var(--foreground)',
+                                textDecoration: 'none',
+                                transition: 'all 0.2s ease'
+                            }}
+                        >
+                            <PinterestIcon />
+                            <span>Pinterest</span>
                         </a>
                     </div>
                 </section>

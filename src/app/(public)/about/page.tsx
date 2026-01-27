@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import BlobImage from '@/components/BlobImage';
 
 export const metadata: Metadata = {
     title: 'About | Ayomide Abolaji',
-    description: 'Learn about Ayomide Abolaji - a London-based model, singer, and poet blending creative disciplines with authentic perspective.',
+    description: 'Learn about Ayomide Abolaji - a Lagos-born, London-raised, Lisbon-based poet, singer and model blending creative disciplines with authentic perspective.',
 };
 
 export default function AboutPage() {
@@ -16,19 +18,16 @@ export default function AboutPage() {
                     <div>
                         <h1 className="display-text" style={{ marginBottom: '2rem' }}>About</h1>
                         <p className="body-text" style={{ fontSize: '1.2rem', lineHeight: 1.8, color: 'var(--secondary)', marginBottom: '2rem' }}>
-                            Ayomide Abolaji is a London-based model, singer, and poet. With a unique blend of creative disciplines,
-                            Ayomide brings an authentic and multifaceted perspective to every project.
+                            Ayomide Abolaji is a Lagos-born, London-raised, Lisbon-based poet, singer and model. Working across disciplines with a devotion to expressive freedom, her practice is rooted in themes of identity, softness and becoming. Informed by a cross-cultural background, Ayomide offers a distinct perspective grounded in authenticity, adaptability, and a strong visual and narrative presence.
                         </p>
                         <p className="body-text" style={{ lineHeight: 1.8, color: 'var(--secondary)' }}>
                             "Who says I've got to move hasty? I'd rather take it easy. I know I'm in my own lane so I choose to set my own pace."
                         </p>
                     </div>
-                    <div style={{ position: 'relative', height: '500px' }}>
-                        <Image
-                            src="/projects/2023-05_Kiuna_Kim_Photography/image00001.jpeg"
+                    <div style={{ position: 'relative', height: '600px', width: '100%' }}>
+                        <BlobImage
+                            src="/projects/2024-05_New_Wave_Mag_and_Galacta_Ag/37.jpg"
                             alt="Ayomide Abolaji Portrait"
-                            fill
-                            style={{ objectFit: 'cover' }}
                         />
                     </div>
                 </div>
@@ -38,9 +37,9 @@ export default function AboutPage() {
                     <h2 className="section-title" style={{ marginBottom: '3rem', textAlign: 'center' }}>Disciplines</h2>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
                         {[
-                            { title: 'Modeling', description: 'Editorial, commercial, and runway work with brands and publications across London and internationally.' },
-                            { title: 'Music', description: 'A versatile vocalist exploring R&B, soul, and contemporary sounds. Known for emotive performances and original compositions.' },
                             { title: 'Poetry', description: 'Spoken word and written poetry that explores identity, culture, and the human experience with lyrical depth.' },
+                            { title: 'Music', description: 'A versatile vocalist exploring R&B, soul, and contemporary sounds. Known for emotive performances and original compositions.' },
+                            { title: 'Modeling', description: 'Editorial, commercial, and runway work with brands and publications across London and internationally.' },
                         ].map((item) => (
                             <div key={item.title} style={{
                                 padding: '2rem',

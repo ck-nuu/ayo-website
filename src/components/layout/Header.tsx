@@ -33,7 +33,7 @@ export default function Header() {
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoImageWrapper}>
                         <Image
-                            src="/logos/logo-white-text.png"
+                            src="/logos/logo-header.png"
                             alt="Ayomide Abolaji Logo"
                             width={240}
                             height={120}

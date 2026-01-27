@@ -1,18 +1,27 @@
 /* Global Styles */
 
 :root {
-    /* Editorial Dark Palette */
-    --background: #0f0f0f;
-    /* Deep Charcoal */
-    --foreground: #f0f0f0;
-    /* Soft White */
-    --primary: #ffffff;
-    --secondary: #888888;
-    --accent: #d4d4d4;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --grid-line: rgba(255, 255, 255, 0.05);
+    /* Editorial Light Palette */
+    --background: #F7DAD9;
+    /* Soft Blush */
+    --foreground: #170312;
+    /* Coffee Bean */
 
-    --font-sans: var(--font-inter);
+    /* Main Colors */
+    --primary: #568419;
+    /* Forest Moss */
+    --secondary: #74226C;
+    /* Royal Plum */
+
+    /* Accents */
+    --accent: #D1F5BE;
+    /* Tea Green */
+
+    /* Derived Colors */
+    --border-color: rgba(23, 3, 18, 0.1);
+    --grid-line: rgba(23, 3, 18, 0.05);
+
+    --font-sans: var(--font-outfit);
     --font-serif: var(--font-playfair);
 
     --max-width: 1400px;

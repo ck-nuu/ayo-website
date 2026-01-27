@@ -37,6 +37,7 @@ export default function ContactForm() {
                     required
                     className={styles.input}
                     placeholder="Your full name"
+                    suppressHydrationWarning={true}
                 />
             </div>
 

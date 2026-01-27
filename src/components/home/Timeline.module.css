@@ -69,6 +69,7 @@
     position: relative;
     z-index: 2;
     overflow: hidden;
+    border-radius: 16px;
 }
 
 .content:hover {

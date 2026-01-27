@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.svg {
+    width: 100%;
+    height: 100%;
+    /* aspect-ratio: 1/1; - handled by container/svg default */
+}
+
+/* 
+   We target the path inside the clipPath via ID selector logic in standard CSS,
+   but in CSS Modules used with SVG elements inside components, 
+   it's often safer to rely on structure or valid selectors.
+   The user's CSS uses #blobClip { transform... } which targets the ID directly.
+*/
+.svg:hover :global(#blobClip) {
+    transform: scale(1.15) translate(0%, 0%);
+}
+
+/* Initial state for the clip path */
+:global(#blobClip) {
+    transform-origin: center;
+    transition: ease-out transform 0.4s;
+}
+
+.textContent {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: var(--foreground);
+    mix-blend-mode: normal;
+    transition: ease fill 0.5s;
+    line-height: 1.2;
+}
+
+.svg:hover .textContent {
+    fill: var(--background);
+    mix-blend-mode: exclusion;
+    /* Changed to exclusion for better contrast on light bg, or overlay as requested */
+}

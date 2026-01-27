@@ -19,17 +19,18 @@ export default function ContactPage() {
                                 For bookings, collaborations, or general inquiries, please use the form or email directly.
                             </p>
                             <a
-                                href="mailto:ayomideabolaji.inc+website@gmail.com"
+                                href="mailto:info@ayomideabolaji.com"
                                 className="body-text"
                                 style={{ color: 'var(--primary)', textDecoration: 'none', display: 'block', marginBottom: '2rem' }}
                             >
-                                ayomideabolaji.inc+website@gmail.com
+                                info@ayomideabolaji.com
                             </a>
 
                             <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-serif)', marginBottom: '1rem' }}>Socials</h3>
                             <div style={{ display: 'flex', gap: '1rem' }}>
                                 <a href="https://instagram.com/ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>Instagram</a>
                                 <a href="https://tiktok.com/@ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>TikTok</a>
+                                <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" style={{ color: 'var(--secondary)' }}>Pinterest</a>
                                 <a href="https://linkedin.com/in/ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
                             </div>
                         </div>

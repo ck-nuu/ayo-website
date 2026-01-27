@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-    variable: "--font-inter",
+const outfit = Outfit({
+    variable: "--font-outfit",
     subsets: ["latin"],
     display: "swap",
 });
@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-    title: "Ayomide Abolaji | Model, Singer, Poet",
-    description: "Official portfolio of Ayomide Abolaji. Model, Singer, and Poet based in London.",
+    title: "Ayomide Abolaji | Poet, Singer, Model",
+    description: "Official portfolio of Ayomide Abolaji. Poet, Singer, and Model based in Lisbon.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+            <body className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
                 {children}
             </body>
         </html>
