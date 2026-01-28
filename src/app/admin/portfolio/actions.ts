@@ -10,6 +10,8 @@ export async function getPortfolioItems() {
     const { data, error } = await supabase
         .from('portfolio')
         .select('*')
+        .order('year', { ascending: false })
+        .order('month', { ascending: false })
         .order('created_at', { ascending: false })
 
     if (error) {
@@ -73,10 +75,13 @@ export async function createPortfolioItem(formData: FormData) {
     const supabase = await createClient()
 
     // Auth check
+    console.log('[Portfolio] Starting createPortfolioItem...')
     const { data: { user }, error: authError } = await supabase.auth.getUser()
     if (authError || !user) {
+        console.error('[Portfolio] Auth error:', authError)
         return { error: 'Unauthorized' }
     }
+    console.log('[Portfolio] User authenticated:', user.id)
 
     const title = formData.get('title') as string
     const discipline = formData.get('discipline') as string
@@ -87,17 +92,31 @@ export async function createPortfolioItem(formData: FormData) {
     const coverImage = formData.get('image') as File
     const additionalImages = formData.getAll('additional_images') as File[]
 
+    console.log('[Portfolio] Form data:', { title, discipline, subcategory, year, link, association })
+    console.log('[Portfolio] Cover image:', coverImage?.name, coverImage?.size)
+
     if (!title || !discipline || !subcategory || !year || !coverImage) {
+        console.error('[Portfolio] Missing required fields')
         return { error: 'Missing required fields' }
     }
 
-    // Upload cover image
-    const image_url = await uploadImage(supabase, coverImage)
-    if (!image_url) {
-        return { error: 'Failed to upload cover image' }
+    // Check if coverImage is a valid file
+    if (!coverImage || coverImage.size === 0) {
+        console.error('[Portfolio] Cover image is empty or invalid')
+        return { error: 'Cover image is required' }
     }
 
+    // Upload cover image
+    console.log('[Portfolio] Uploading cover image...')
+    const image_url = await uploadImage(supabase, coverImage)
+    if (!image_url) {
+        console.error('[Portfolio] Failed to upload cover image')
+        return { error: 'Failed to upload cover image' }
+    }
+    console.log('[Portfolio] Cover image uploaded:', image_url)
+
     // Insert portfolio record
+    console.log('[Portfolio] Inserting portfolio record...')
     const { data: newItem, error: insertError } = await supabase
         .from('portfolio')
         .insert({
@@ -113,9 +132,10 @@ export async function createPortfolioItem(formData: FormData) {
         .single()
 
     if (insertError || !newItem) {
-        console.error('Error creating portfolio item:', insertError)
-        return { error: 'Failed to create portfolio item' }
+        console.error('[Portfolio] Error creating portfolio item:', insertError)
+        return { error: 'Failed to create portfolio item: ' + (insertError?.message || 'Unknown error') }
     }
+    console.log('[Portfolio] Portfolio item created:', newItem.id)
 
     // Upload additional images
     if (additionalImages.length > 0) {
@@ -279,5 +299,165 @@ export async function deletePortfolioImage(imageId: string, imageUrl: string) {
     }
 
     revalidatePath('/admin/portfolio')
+    return { success: true }
+}
+
+// ============================================
+// TUS Upload Support - Actions that accept pre-uploaded URLs
+// ============================================
+
+/**
+ * Get access token for TUS uploads
+ * This is needed for client-side TUS authentication
+ */
+export async function getAccessToken() {
+    const supabase = await createClient()
+
+    const { data: { session }, error } = await supabase.auth.getSession()
+
+    if (error || !session) {
+        return { error: 'Not authenticated' }
+    }
+
+    return { accessToken: session.access_token }
+}
+
+/**
+ * Create portfolio item with pre-uploaded image URLs (for TUS uploads)
+ */
+export async function createPortfolioItemWithUrls(data: {
+    title: string
+    discipline: string
+    subcategory: string
+    year: string
+    month?: number | null
+    link?: string | null
+    association?: string | null
+    coverImageUrl: string
+    additionalImageUrls?: string[]
+}) {
+    const supabase = await createClient()
+
+    // Auth check
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    if (authError || !user) {
+        return { error: 'Unauthorized' }
+    }
+
+    if (!data.title || !data.discipline || !data.subcategory || !data.year || !data.coverImageUrl) {
+        return { error: 'Missing required fields' }
+    }
+
+    // Insert portfolio record
+    const { data: newItem, error: insertError } = await supabase
+        .from('portfolio')
+        .insert({
+            title: data.title,
+            discipline: data.discipline,
+            subcategory: data.subcategory,
+            year: data.year,
+            month: data.month || 1,
+            image_url: data.coverImageUrl,
+            link: data.link,
+            association: data.association
+        })
+        .select('id')
+        .single()
+
+    if (insertError || !newItem) {
+        console.error('[Portfolio] Error creating portfolio item:', insertError)
+        return { error: 'Failed to create portfolio item: ' + (insertError?.message || 'Unknown error') }
+    }
+
+    // Insert additional images
+    if (data.additionalImageUrls && data.additionalImageUrls.length > 0) {
+        for (let i = 0; i < data.additionalImageUrls.length; i++) {
+            await supabase.from('portfolio_images').insert({
+                portfolio_id: newItem.id,
+                image_url: data.additionalImageUrls[i],
+                sort_order: i
+            })
+        }
+    }
+
+    revalidatePath('/admin/portfolio')
+    return { success: true, id: newItem.id }
+}
+
+/**
+ * Update portfolio item with pre-uploaded image URLs (for TUS uploads)
+ */
+export async function updatePortfolioItemWithUrls(
+    id: string,
+    data: {
+        title: string
+        discipline: string
+        subcategory: string
+        year: string
+        month?: number | null
+        link?: string | null
+        association?: string | null
+        newCoverImageUrl?: string | null
+        newAdditionalImageUrls?: string[]
+    }
+) {
+    const supabase = await createClient()
+
+    // Auth check
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    if (authError || !user) {
+        return { error: 'Unauthorized' }
+    }
+
+    const updates: Record<string, unknown> = {
+        title: data.title,
+        discipline: data.discipline,
+        subcategory: data.subcategory,
+        year: data.year,
+        month: data.month || 1,
+        link: data.link,
+        association: data.association,
+        updated_at: new Date().toISOString()
+    }
+
+    // Update cover image if new one provided
+    if (data.newCoverImageUrl) {
+        updates.image_url = data.newCoverImageUrl
+    }
+
+    const { error: updateError } = await supabase
+        .from('portfolio')
+        .update(updates)
+        .eq('id', id)
+
+    if (updateError) {
+        return { error: 'Failed to update portfolio item' }
+    }
+
+    // Add new additional images
+    if (data.newAdditionalImageUrls && data.newAdditionalImageUrls.length > 0) {
+        // Get current max sort_order
+        const { data: existingImages } = await supabase
+            .from('portfolio_images')
+            .select('sort_order')
+            .eq('portfolio_id', id)
+            .order('sort_order', { ascending: false })
+            .limit(1)
+
+        let nextOrder = (existingImages && existingImages.length > 0)
+            ? existingImages[0].sort_order + 1
+            : 0
+
+        for (const imgUrl of data.newAdditionalImageUrls) {
+            await supabase.from('portfolio_images').insert({
+                portfolio_id: id,
+                image_url: imgUrl,
+                sort_order: nextOrder++
+            })
+        }
+    }
+
+    revalidatePath('/admin/portfolio')
+    revalidatePath(`/admin/portfolio/${id}`)
     return { success: true }
 }

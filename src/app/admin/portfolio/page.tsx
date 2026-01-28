@@ -51,7 +51,7 @@ export default async function PortfolioPage() {
                             <div style={{ padding: '1.5rem' }}>
                                 <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
                                     <h3 style={{ fontSize: '1.1rem', margin: 0 }}>{item.title}</h3>
-                                    <span style={{ fontSize: '0.8rem', color: 'var(--secondary)' }}>{item.year}</span>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--secondary)' }}>\n                                        {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][item.month - 1] || 'Jan'} {item.year}\n                                    </span>
                                 </div>
                                 <div style={{ fontSize: '0.8rem', color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem' }}>
                                     {item.discipline} / {item.subcategory}

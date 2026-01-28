@@ -249,7 +249,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                                 display: 'block',
                                                 transition: 'opacity 0.3s ease',
                                             }}
-                                            className="hover:opacity-80 transition-opacity duration-300"
+                                            className="hover:opacity-70 transition-opacity duration-300"
                                         />
                                     </ImageListItem>
                                 ))}
@@ -270,7 +270,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        backgroundColor: '#D1F5BE',
+                                        backgroundColor: 'rgba(209, 245, 190, 0.7)',
                                         zIndex: 10,
                                         display: 'flex',
                                         flexDirection: 'column',
