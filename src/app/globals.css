@@ -1,25 +1,32 @@
 /* Global Styles */
 
 :root {
-    /* Editorial Light Palette */
-    --background: #F7DAD9;
-    /* Soft Blush */
-    --foreground: #170312;
-    /* Coffee Bean */
+    /* Editorial Light Palette - SWAPPED */
+    --background: #568419;
+    /* Forest Moss (Now Background) */
+    --background-rgb: 86, 132, 25;
 
-    /* Main Colors */
-    --primary: #568419;
-    /* Forest Moss */
-    --secondary: #74226C;
-    /* Royal Plum */
+    --foreground: #FDF7F2;
+    /* Off White for better contrast on green */
+    --foreground-rgb: 253, 247, 242;
 
-    /* Accents */
-    --accent: #D1F5BE;
-    /* Tea Green */
+    /* Main Colors - SWAPPED */
+    --primary: #F7DAD9;
+    /* Soft Blush (Now Primary) */
+    --primary-rgb: 247, 218, 217;
+
+    --secondary: #D1F5BE;
+    /* Tea Green (Now Secondary) */
+    --secondary-rgb: 209, 245, 190;
+
+    /* Accents - SWAPPED */
+    --accent: #74226C;
+    /* Royal Plum (Now Accent) */
+    --accent-rgb: 116, 34, 108;
 
     /* Derived Colors */
-    --border-color: rgba(23, 3, 18, 0.1);
-    --grid-line: rgba(23, 3, 18, 0.05);
+    --border-color: rgba(253, 247, 242, 0.1);
+    --grid-line: rgba(253, 247, 242, 0.05);
 
     --font-sans: var(--font-outfit);
     --font-serif: var(--font-playfair);

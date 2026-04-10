@@ -21,7 +21,7 @@
     background-color: var(--background);
     background-image:
         radial-gradient(circle at 0% 0%, var(--accent) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(116, 34, 108, 0.2) 0%, transparent 50%);
+        radial-gradient(circle at 100% 100%, rgba(var(--accent-rgb), 0.2) 0%, transparent 50%);
 }
 
 .noiseOverlay {
@@ -53,8 +53,7 @@
 
 .titleWrapper {
     position: relative;
-    /* Soft, diffused shadow instead of hard drop shadow */
-    filter: drop-shadow(0 0 15px rgba(86, 132, 25, 0.15));
+    filter: drop-shadow(0 0 15px rgba(var(--background-rgb), 0.15));
 }
 
 .title {

@@ -353,8 +353,8 @@ export default function PortfolioForm({ initialData }: PortfolioFormProps) {
             {compressing && (
                 <div style={{
                     padding: '1rem',
-                    background: 'rgba(86, 132, 25, 0.1)',
-                    border: '1px solid var(--accent)',
+                    background: 'rgba(var(--background-rgb), 0.1)',
+                    border: '1px solid var(--secondary)',
                     borderRadius: '4px'
                 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
@@ -372,7 +372,7 @@ export default function PortfolioForm({ initialData }: PortfolioFormProps) {
                         <div style={{
                             width: `${compressionProgress}%`,
                             height: '100%',
-                            background: 'var(--accent)',
+                            background: 'var(--secondary)',
                             transition: 'width 0.2s ease'
                         }} />
                     </div>
@@ -383,8 +383,8 @@ export default function PortfolioForm({ initialData }: PortfolioFormProps) {
             {compressionStats && !compressing && !uploading && (
                 <div style={{
                     padding: '0.75rem 1rem',
-                    background: 'rgba(86, 132, 25, 0.15)',
-                    border: '1px solid var(--accent)',
+                    background: 'rgba(var(--background-rgb), 0.15)',
+                    border: '1px solid var(--secondary)',
                     borderRadius: '4px',
                     fontSize: '0.85rem',
                     color: 'var(--foreground)'
@@ -400,8 +400,8 @@ export default function PortfolioForm({ initialData }: PortfolioFormProps) {
             {uploading && (
                 <div style={{
                     padding: '1rem',
-                    background: 'rgba(116, 34, 108, 0.1)',
-                    border: '1px solid var(--secondary)',
+                    background: 'rgba(var(--accent-rgb), 0.1)',
+                    border: '1px solid var(--accent)',
                     borderRadius: '4px'
                 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -422,7 +422,7 @@ export default function PortfolioForm({ initialData }: PortfolioFormProps) {
                         <div style={{
                             width: `${uploadProgress}%`,
                             height: '100%',
-                            background: 'linear-gradient(90deg, var(--accent), var(--secondary))',
+                            background: 'linear-gradient(90deg, var(--secondary), var(--accent))',
                             transition: 'width 0.2s ease'
                         }} />
                     </div>

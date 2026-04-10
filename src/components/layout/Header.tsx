@@ -33,10 +33,10 @@ export default function Header() {
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoImageWrapper}>
                         <Image
-                            src="/logos/logo-header.png"
+                            src="/logos/logo-header-v2.png"
                             alt="Ayomide Abolaji Logo"
-                            width={240}
-                            height={120}
+                            width={400}
+                            height={200}
                             priority
                             style={{ objectFit: 'contain' }}
                         />

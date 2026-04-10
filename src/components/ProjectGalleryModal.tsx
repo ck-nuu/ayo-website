@@ -149,9 +149,9 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
             sx={{ '& .MuiDialog-paper': { overflow: 'hidden !important' } }}
             PaperProps={{
                 sx: {
-                    bgcolor: '#D1F5BE', // Tea Green
+                    bgcolor: 'var(--secondary)',
                     backgroundImage: 'none',
-                    color: '#74226C', // Royal Plum (Scrollbar color)
+                    color: 'var(--accent)',
                     overflow: 'hidden !important' // CRITICAL: Disable Dialog's internal scroll
                 }
             }}
@@ -176,7 +176,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                             letterSpacing: '0.2em',
                             fontWeight: 600,
                             fontSize: '0.75rem',
-                            color: '#74226C',
+                            color: 'var(--accent)',
                             opacity: 0.8
                         }}
                     >
@@ -187,7 +187,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                         {viewMode === 'carousel' && (
                             <IconButton
                                 onClick={() => setViewMode('grid')}
-                                sx={{ color: '#74226C', opacity: 0.7, '&:hover': { opacity: 1 } }}
+                                sx={{ color: 'var(--accent)', opacity: 0.7, '&:hover': { opacity: 1 } }}
                                 title="Back to Grid"
                             >
                                 <GridIcon size={18} />
@@ -199,7 +199,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                             color="inherit"
                             onClick={onClose}
                             aria-label="close"
-                            sx={{ color: '#74226C', opacity: 0.7, '&:hover': { opacity: 1 } }}
+                            sx={{ color: 'var(--accent)', opacity: 0.7, '&:hover': { opacity: 1 } }}
                         >
                             <X size={24} />
                         </IconButton>
@@ -211,7 +211,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
             <DialogContent sx={{ p: 0, display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden !important' }}>
                 {isLoading ? (
                     <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <CircularProgress sx={{ color: '#74226C' }} size={30} thickness={2} />
+                        <CircularProgress sx={{ color: 'var(--accent)' }} size={30} thickness={2} />
                     </Box>
                 ) : (
                     <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
@@ -227,8 +227,8 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                             height: '100%',
                             // Custom dark scrollbar
                             '&::-webkit-scrollbar': { width: '8px' },
-                            '&::-webkit-scrollbar-track': { background: '#D1F5BE' },
-                            '&::-webkit-scrollbar-thumb': { background: '#74226C', borderRadius: '4px' }
+                            '&::-webkit-scrollbar-track': { background: 'var(--secondary)' },
+                            '&::-webkit-scrollbar-thumb': { background: 'var(--accent)', borderRadius: '4px' }
                         }}>
                             <ImageList variant="masonry" cols={isMobile ? 2 : 3} gap={isMobile ? 8 : 24}>
                                 {images.map((img, index) => (
@@ -270,7 +270,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        backgroundColor: 'rgba(209, 245, 190, 0.7)',
+                                        backgroundColor: 'rgba(var(--secondary-rgb), 0.8)',
                                         zIndex: 10,
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -320,7 +320,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                                 onClick={prevImage}
                                                 sx={{
                                                     position: 'absolute', left: 20, top: '50%', transform: 'translateY(-50%)',
-                                                    color: '#74226C',
+                                                    color: 'var(--accent)',
                                                     display: { xs: 'none', md: 'flex' },
                                                     opacity: 0.5,
                                                     '&:hover': { opacity: 1, bgcolor: 'transparent' }
@@ -333,7 +333,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                                 onClick={nextImage}
                                                 sx={{
                                                     position: 'absolute', right: 20, top: '50%', transform: 'translateY(-50%)',
-                                                    color: '#74226C',
+                                                    color: 'var(--accent)',
                                                     display: { xs: 'none', md: 'flex' },
                                                     opacity: 0.5,
                                                     '&:hover': { opacity: 1, bgcolor: 'transparent' }
@@ -349,7 +349,7 @@ export default function ProjectGalleryModal({ isOpen, onClose, project }: Projec
                                         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
                                         zIndex: 5
                                     }}>
-                                        <Typography variant="caption" sx={{ color: '#74226C', opacity: 0.6, letterSpacing: '0.1em' }}>
+                                        <Typography variant="caption" sx={{ color: 'var(--accent)', opacity: 0.6, letterSpacing: '0.1em' }}>
                                             {currentIndex + 1} of {images.length}
                                         </Typography>
 

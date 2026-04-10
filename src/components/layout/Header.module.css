@@ -5,16 +5,17 @@
     height: 80px;
     /* FIXED HEIGHT */
     z-index: 100;
-    background-color: rgba(247, 218, 217, 0.8);
+    background-color: rgba(var(--background-rgb), 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    overflow: visible;
 }
 
 .scrolled {
-    background-color: rgba(247, 218, 217, 0.95);
+    background-color: rgba(var(--background-rgb), 0.95);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -33,19 +34,22 @@
     display: flex;
     align-items: center;
     position: relative;
-    /* Allow logo to overlap if it's very tall, but keeping it within height is cleaner */
     height: 100%;
+    z-index: 101;
+    min-width: 220px; /* Increased space for the even larger absolute positioned wrapper */
 }
 
-/* Add a wrapper to control logo size independently of header height if needed */
+/* Logo overflows header to appear large and bleed into hero */
 .logoImageWrapper {
     display: flex;
     align-items: center;
-    height: 100%;
-    /* margin-top: 10px; REMOVED */
-    min-width: 100px;
-    /* Ensure some width */
-    position: relative;
+    height: 200px; /* Increased height further to allow deeper bleeding */
+    min-width: 150px;
+    position: absolute; /* Position absolute to overlap without pushing header content */
+    top: 0;
+    left: 0;
+    pointer-events: auto;
+    transition: all 0.3s ease;
 }
 
 .logoImageWrapper img {
@@ -109,8 +113,9 @@
     }
 
     .logoImageWrapper {
-        height: 100%;
-        margin-top: 0;
+        height: 120px;
+        position: absolute;
+        top: 0;
     }
 
     .nav {
