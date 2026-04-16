@@ -36,19 +36,15 @@
     position: relative;
     height: 100%;
     z-index: 101;
-    min-width: 220px; /* Increased space for the even larger absolute positioned wrapper */
 }
 
-/* Logo overflows header to appear large and bleed into hero */
+/* Logo contained within header */
 .logoImageWrapper {
     display: flex;
     align-items: center;
-    height: 120px; /* Reduced further from 160px */
-    min-width: 150px;
-    position: absolute; /* Position absolute to overlap without pushing header content */
-    top: 0;
-    left: -60px; /* Adjusted shift proportionally */
-    pointer-events: auto;
+    height: 50px; /* Contained height */
+    min-width: 120px;
+    position: relative;
     transition: all 0.3s ease;
 }
 
@@ -131,10 +127,9 @@
     }
 
     .logoImageWrapper {
-        height: 80px; /* Reduced further from 100px */
-        position: absolute;
-        top: 0;
-        left: -2px; /* Adjusted from -5px to prevent cutoff */
+        height: 35px; /* Smaller height for mobile */
+        position: relative;
+        left: 0;
     }
 
     .nav {
