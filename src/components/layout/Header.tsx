@@ -10,8 +10,8 @@ const navItems = [
     { label: 'About', href: '/about' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Media', href: '/media' },
-    { label: 'Events', href: '/events' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Events', href: '/events' },
     { label: 'Contact', href: '/contact' },
 ];
 
@@ -33,7 +33,7 @@ export default function Header() {
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoImageWrapper}>
                         <Image
-                            src="/logos/logo-header-v2.png"
+                            src="/logos/5.png"
                             alt="Ayomide Abolaji Logo"
                             width={400}
                             height={200}

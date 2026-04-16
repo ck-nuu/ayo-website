@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import styles from './Footer.module.css';
 import NewsletterForm from '@/components/forms/NewsletterForm';
 
@@ -42,10 +42,11 @@ export default function Footer() {
                 <div className={styles.top}>
                     <div className={styles.brand}>
                         <Image
-                            src="/logos/logo-white-text.png"
+                            src="/logos/4.png"
                             alt="Ayomide Abolaji Logo"
-                            width={350}
-                            height={123}
+                            width={675}
+                            height={237}
+                            className={styles.footerLogo}
                             style={{ objectFit: 'contain' }}
                         />
                         <p className={styles.description}>
@@ -70,7 +71,6 @@ export default function Footer() {
                             <a href="https://www.instagram.com/ayomid_night/" target="_blank" rel="noopener noreferrer" className={styles.link}>Instagram</a>
                             <a href="https://www.tiktok.com/@ayomidknight" target="_blank" rel="noopener noreferrer" className={styles.link}>TikTok</a>
                             <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" rel="noopener noreferrer" className={styles.link}>Pinterest</a>
-                            <a href="https://www.linkedin.com/in/ayomide-abolaji-624840199" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
                         </div>
                     </div>
 
@@ -94,9 +94,6 @@ export default function Footer() {
                         </a>
                         <a href="https://www.pinterest.co.uk/ayomideabolaji/" aria-label="Pinterest">
                             <PinterestIcon />
-                        </a>
-                        <a href="https://www.linkedin.com/in/ayomide-abolaji-624840199" aria-label="LinkedIn">
-                            <Linkedin size={20} />
                         </a>
                     </div>
                 </div>

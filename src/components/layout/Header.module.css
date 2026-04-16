@@ -47,7 +47,7 @@
     min-width: 150px;
     position: absolute; /* Position absolute to overlap without pushing header content */
     top: 0;
-    left: 0;
+    left: -100px;
     pointer-events: auto;
     transition: all 0.3s ease;
 }
@@ -71,13 +71,12 @@
 }
 
 .navLink {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--secondary);
     position: relative;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.8rem;
 }
 
 .navLink:hover,
@@ -91,7 +90,7 @@
     color: var(--background);
     border-radius: 0;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: opacity 0.2s;
@@ -116,6 +115,7 @@
         height: 120px;
         position: absolute;
         top: 0;
+        left: -40px;
     }
 
     .nav {

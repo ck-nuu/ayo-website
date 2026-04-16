@@ -1,6 +1,6 @@
 "use client";
 
-import { InstagramEmbed, PinterestEmbed } from 'react-social-media-embed';
+import { InstagramEmbed } from 'react-social-media-embed';
 import { useEffect, useState } from 'react';
 
 export default function SocialFeeds() {
@@ -43,21 +43,7 @@ export default function SocialFeeds() {
                 </div>
             </section>
 
-            {/* Pinterest Section */}
-            <section style={{ marginBottom: '6rem' }}>
-                <h2 className="section-title" style={{ marginBottom: '2rem' }}>Pinterest</h2>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    width: '100%'
-                }}>
-                    <PinterestEmbed
-                        url="https://www.pinterest.co.uk/ayomideabolaji/"
-                        width={800}
-                        height={600}
-                    />
-                </div>
-            </section>
+
         </>
     );
 }

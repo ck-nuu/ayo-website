@@ -94,7 +94,8 @@ export default async function AboutPage() {
                             <div key={item.title} style={{
                                 padding: '2rem',
                                 border: '1px solid rgba(255,255,255,0.1)',
-                                background: 'rgba(255,255,255,0.02)'
+                                background: 'rgba(255,255,255,0.02)',
+                                borderRadius: '12px'
                             }}>
                                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', marginBottom: '1rem' }}>
                                     {item.title}
