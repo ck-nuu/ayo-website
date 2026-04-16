@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import BlobImage from '@/components/BlobImage';
+import styles from './About.module.css';
 import {
     getSiteContent,
     AboutIntroContent,
@@ -64,11 +65,11 @@ export default async function AboutPage() {
     const cta = ctaData || defaultCta;
 
     return (
-        <main style={{ paddingTop: '120px', minHeight: '100vh' }}>
-            <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem' }}>
+        <main style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '4rem' }}>
+            <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
 
                 {/* Hero Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '6rem', alignItems: 'center' }}>
+                <div className={styles.hero}>
                     <div>
                         <h1 className="display-text" style={{ marginBottom: '2rem' }}>{intro.heading}</h1>
                         <p className="body-text" style={{ fontSize: '1.2rem', lineHeight: 1.8, color: 'var(--secondary)', marginBottom: '2rem' }}>
@@ -78,7 +79,7 @@ export default async function AboutPage() {
                             {intro.quote}
                         </p>
                     </div>
-                    <div style={{ position: 'relative', height: '600px', width: '100%' }}>
+                    <div className={styles.heroImageWrapper}>
                         <BlobImage
                             src={intro.image_url}
                             alt="Ayomide Abolaji Portrait"
@@ -89,14 +90,9 @@ export default async function AboutPage() {
                 {/* Disciplines */}
                 <section style={{ marginBottom: '6rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '3rem', textAlign: 'center' }}>Disciplines</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+                    <div className={styles.disciplinesGrid}>
                         {disciplines.items.map((item) => (
-                            <div key={item.title} style={{
-                                padding: '2rem',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                background: 'rgba(255,255,255,0.02)',
-                                borderRadius: '12px'
-                            }}>
+                            <div key={item.title} className={styles.disciplineCard}>
                                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', marginBottom: '1rem' }}>
                                     {item.title}
                                 </h3>
@@ -111,41 +107,25 @@ export default async function AboutPage() {
                 {/* Experience Highlights */}
                 <section style={{ marginBottom: '6rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '3rem' }}>Experience</h2>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <div className={styles.experienceList}>
                         {experience.items.map((item, i) => (
-                            <div key={i} style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                padding: '1rem 0',
-                                borderBottom: '1px solid rgba(255,255,255,0.05)'
-                            }}>
-                                <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem' }}>{item.title}</span>
-                                <span style={{ color: 'var(--secondary)', fontSize: '0.9rem' }}>{item.year}</span>
+                            <div key={i} className={styles.experienceItem}>
+                                <span className={styles.experienceTitle}>{item.title}</span>
+                                <span className={styles.experienceYear}>{item.year}</span>
                             </div>
                         ))}
                     </div>
                 </section>
 
                 {/* Contact CTA */}
-                <section style={{ textAlign: 'center', padding: '4rem 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                <section className={styles.ctaSection}>
                     <h2 className="section-title" style={{ marginBottom: '1rem' }}>{cta.heading}</h2>
                     <p className="body-text" style={{ color: 'var(--secondary)', marginBottom: '2rem' }}>
                         {cta.subtitle}
                     </p>
                     <a
                         href={cta.button_link}
-                        style={{
-                            display: 'inline-block',
-                            padding: '1rem 2rem',
-                            background: 'var(--foreground)',
-                            color: 'var(--background)',
-                            textDecoration: 'none',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.1em',
-                            fontSize: '0.9rem',
-                            fontWeight: 600
-                        }}
+                        className={styles.ctaButton}
                     >
                         {cta.button_text}
                     </a>

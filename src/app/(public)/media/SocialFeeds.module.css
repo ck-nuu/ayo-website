@@ -1,0 +1,17 @@
+.instagramGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+}
+
+.instagramPost {
+    width: 100%;
+    max-width: 328px;
+}
+
+@media (min-width: 700px) {
+    .instagramGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}

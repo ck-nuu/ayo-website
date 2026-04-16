@@ -2,6 +2,7 @@
 
 import { InstagramEmbed } from 'react-social-media-embed';
 import { useEffect, useState } from 'react';
+import styles from './SocialFeeds.module.css';
 
 export default function SocialFeeds() {
     const [mounted, setMounted] = useState(false);
@@ -25,14 +26,9 @@ export default function SocialFeeds() {
             {/* Instagram Section */}
             <section style={{ marginBottom: '6rem' }}>
                 <h2 className="section-title" style={{ marginBottom: '2rem' }}>Instagram</h2>
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '2rem',
-                    justifyItems: 'center'
-                }}>
+                <div className={styles.instagramGrid}>
                     {instagramPosts.map((url, index) => (
-                        <div key={index} style={{ width: '100%', maxWidth: '328px' }}>
+                        <div key={index} className={styles.instagramPost}>
                             <InstagramEmbed
                                 url={url}
                                 width={328}

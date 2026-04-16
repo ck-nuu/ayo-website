@@ -1,0 +1,88 @@
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    align-items: center;
+}
+
+.heroImageWrapper {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.disciplinesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.disciplineCard {
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}
+
+.experienceList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experienceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.experienceTitle {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    padding-right: 1rem;
+}
+
+.experienceYear {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.ctaSection {
+    text-align: center;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--foreground);
+    color: var(--background);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 6rem;
+    }
+
+    .heroImageWrapper {
+        height: 600px;
+    }
+
+    .disciplinesGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

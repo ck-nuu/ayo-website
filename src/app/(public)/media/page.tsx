@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { Instagram } from 'lucide-react';
 import SocialFeeds from './SocialFeeds';
+import styles from './Media.module.css';
 
 export const metadata: Metadata = {
     title: 'Media Hub | Ayomide Abolaji',
@@ -100,21 +101,12 @@ export default function MediaPage() {
                     <p className="body-text" style={{ color: 'var(--secondary)', marginBottom: '2rem' }}>
                         Stay updated with the latest content and behind-the-scenes
                     </p>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+                    <div className={styles.socialLinks}>
                         <a
                             href="https://www.instagram.com/ayomid_night/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                padding: '1rem 2rem',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                color: 'var(--foreground)',
-                                textDecoration: 'none',
-                                transition: 'all 0.2s ease'
-                            }}
+                            className={styles.socialLink}
                         >
                             <Instagram size={20} />
                             <span>Instagram</span>
@@ -123,16 +115,7 @@ export default function MediaPage() {
                             href="https://www.tiktok.com/@ayomidknight"
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                padding: '1rem 2rem',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                color: 'var(--foreground)',
-                                textDecoration: 'none',
-                                transition: 'all 0.2s ease'
-                            }}
+                            className={styles.socialLink}
                         >
                             <TikTokIcon />
                             <span>TikTok</span>
@@ -141,16 +124,7 @@ export default function MediaPage() {
                             href="https://www.pinterest.co.uk/ayomideabolaji/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                padding: '1rem 2rem',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                color: 'var(--foreground)',
-                                textDecoration: 'none',
-                                transition: 'all 0.2s ease'
-                            }}
+                            className={styles.socialLink}
                         >
                             <PinterestIcon />
                             <span>Pinterest</span>

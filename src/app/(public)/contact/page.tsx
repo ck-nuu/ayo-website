@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/forms/ContactForm';
+import styles from './Contact.module.css';
 
 export const metadata: Metadata = {
     title: 'Contact | Ayomide Abolaji',
@@ -13,7 +14,7 @@ export default function ContactPage() {
                 <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 2rem' }}>
                     <h1 className="display-text" style={{ marginBottom: '2rem' }}>Get in Touch</h1>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '4rem' }}>
+                    <div className={styles.contactGrid}>
                         <div>
                             <p className="body-text" style={{ color: 'var(--secondary)', marginBottom: '1rem' }}>
                                 For bookings, collaborations, or general inquiries, please use the form or email directly.
@@ -27,11 +28,11 @@ export default function ContactPage() {
                             </a>
 
                             <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-serif)', marginBottom: '1rem' }}>Socials</h3>
-                            <div style={{ display: 'flex', gap: '1rem' }}>
-                                <a href="https://instagram.com/ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>Instagram</a>
-                                <a href="https://tiktok.com/@ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>TikTok</a>
-                                <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" style={{ color: 'var(--secondary)' }}>Pinterest</a>
-                                <a href="https://linkedin.com/in/ayomideabolaji" target="_blank" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
+                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                <a href="https://instagram.com/ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>Instagram</a>
+                                <a href="https://tiktok.com/@ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>TikTok</a>
+                                <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>Pinterest</a>
+                                <a href="https://linkedin.com/in/ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
                             </div>
                         </div>
 

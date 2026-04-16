@@ -108,3 +108,22 @@ p {
     background: var(--secondary);
     border-radius: 4px;
 }
+
+/* Responsive Utilities */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--font-serif);
+    color: var(--primary);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
