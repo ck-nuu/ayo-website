@@ -31,7 +31,6 @@ export default function ContactPage() {
                             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                 <a href="https://instagram.com/ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>Instagram</a>
                                 <a href="https://tiktok.com/@ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>TikTok</a>
-                                <a href="https://www.pinterest.co.uk/ayomideabolaji/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>Pinterest</a>
                                 <a href="https://linkedin.com/in/ayomideabolaji" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
                             </div>
                         </div>
