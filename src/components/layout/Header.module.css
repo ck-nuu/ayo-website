@@ -26,14 +26,16 @@
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end; /* Navigation on the right */
     height: 100%;
 }
 
 .logo {
     display: flex;
-    align-items: center;
-    position: relative;
+    align-items: flex-end;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
     height: 100%;
     z-index: 101;
 }
@@ -41,9 +43,9 @@
 /* Logo contained within header */
 .logoImageWrapper {
     display: flex;
-    align-items: center;
-    height: 50px; /* Contained height */
-    min-width: 120px;
+    align-items: flex-end;
+    height: 100%; /* Height of header */
+    min-width: 60px;
     position: relative;
     transition: all 0.3s ease;
 }
@@ -110,11 +112,13 @@
     color: var(--foreground);
     cursor: pointer;
     padding: 0.5rem;
-    z-index: 102; /* Ensure it stays above the open menu */
+    z-index: 102;
+    /* Ensure it stays above the open menu */
 }
 
 .mobileMenu {
-    display: none; /* Only show via JS/media queries below */
+    display: none;
+    /* Only show via JS/media queries below */
 }
 
 @media (max-width: 768px) {
@@ -127,7 +131,7 @@
     }
 
     .logoImageWrapper {
-        height: 35px; /* Smaller height for mobile */
+        height: 100%; /* Height of mobile header (60px) */
         position: relative;
         left: 0;
     }
@@ -154,7 +158,8 @@
     .mobileMenu {
         display: block;
         position: fixed;
-        top: 60px; /* height of header */
+        top: 60px;
+        /* height of header */
         left: 0;
         width: 100%;
         height: calc(100vh - 60px);
