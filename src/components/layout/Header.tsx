@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './Header.module.css';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
     { label: 'Home', href: '/' },
@@ -18,6 +19,24 @@ const navItems = [
 export default function Header() {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Close mobile menu when route changes
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [pathname]);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,25 +62,53 @@ export default function Header() {
                     </div>
                 </Link>
 
-                <nav className={styles.nav}>
-                    <ul className={styles.navLinks}>
+                <div className={styles.navRight}>
+                    <nav className={styles.nav}>
+                        <ul className={styles.navLinks}>
+                            {navItems.map((item) => (
+                                <li key={item.href}>
+                                    <Link
+                                        href={item.href}
+                                        className={`${styles.navLink} ${pathname === item.href ? styles.active : ''}`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    <Link href="/contact" className={styles.cta}>
+                        Let's Talk
+                    </Link>
+
+                    <button 
+                        className={styles.mobileMenuBtn} 
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle mobile menu"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div className={styles.mobileMenu}>
+                    <ul className={styles.mobileNavLinks}>
                         {navItems.map((item) => (
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
-                                    className={`${styles.navLink} ${pathname === item.href ? styles.active : ''}`}
+                                    className={`${styles.mobileNavLink} ${pathname === item.href ? styles.active : ''}`}
                                 >
                                     {item.label}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                </nav>
-
-                <Link href="/contact" className={styles.cta}>
-                    Let's Talk
-                </Link>
-            </div>
+                </div>
+            )}
         </header>
     );
 }
