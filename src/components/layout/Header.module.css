@@ -43,11 +43,11 @@
 .logoImageWrapper {
     display: flex;
     align-items: center;
-    height: 200px; /* Increased height further to allow deeper bleeding */
+    height: 160px; /* Reduced from 200px */
     min-width: 150px;
     position: absolute; /* Position absolute to overlap without pushing header content */
     top: 0;
-    left: -100px;
+    left: -80px; /* Adjusted shift proportionally */
     pointer-events: auto;
     transition: all 0.3s ease;
 }
@@ -131,10 +131,10 @@
     }
 
     .logoImageWrapper {
-        height: 120px;
+        height: 100px; /* Reduced from 120px */
         position: absolute;
         top: 0;
-        left: -10px;
+        left: -5px; /* Reduced from -10px */
     }
 
     .nav {

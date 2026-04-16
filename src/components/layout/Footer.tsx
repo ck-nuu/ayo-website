@@ -44,8 +44,8 @@ export default function Footer() {
                         <Image
                             src="/logos/4.png"
                             alt="Ayomide Abolaji Logo"
-                            width={675}
-                            height={237}
+                            width={420}
+                            height={147}
                             className={styles.footerLogo}
                             style={{ objectFit: 'contain' }}
                         />
