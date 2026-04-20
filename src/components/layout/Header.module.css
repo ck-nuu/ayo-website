@@ -26,7 +26,8 @@
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Navigation on the right */
+    justify-content: flex-end;
+    /* Navigation on the right */
     height: 100%;
 }
 
@@ -44,7 +45,8 @@
 .logoImageWrapper {
     display: flex;
     align-items: flex-end;
-    height: 100%; /* Height of header */
+    height: 100%;
+    /* Height of header */
     min-width: 60px;
     position: relative;
     transition: all 0.3s ease;
@@ -131,7 +133,8 @@
     }
 
     .logoImageWrapper {
-        height: 100%; /* Height of mobile header (60px) */
+        height: 100%;
+        /* Height of mobile header (60px) */
         position: relative;
         left: 0;
     }
