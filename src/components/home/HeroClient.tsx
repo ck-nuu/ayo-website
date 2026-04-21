@@ -36,12 +36,13 @@ const itemVariants = {
 } as const;
 
 const imageVariants = {
-    hidden: { scale: 0.95, opacity: 0, y: '-45%', x: '-50%' },
+    hidden: { scale: 0.95, opacity: 0, y: '-45%', x: '-50%', rotate: 45 },
     visible: {
         scale: 1,
         opacity: 1,
         y: '-50%',
         x: '-50%',
+        rotate: 45,
         transition: {
             duration: 1.2,
             ease: "circOut",
@@ -84,7 +85,7 @@ export default function HeroClient({ titleLine1, titleLine2, tagline, imageUrl }
                     src={imageUrl}
                     alt={`${titleLine1} ${titleLine2} Portrait`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    className={styles.modelImage}
                     priority
                 />
             </motion.div>

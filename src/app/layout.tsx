@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Outfit, Playfair_Display, Alex_Brush } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -10,6 +10,13 @@ const outfit = Outfit({
 
 const playfair = Playfair_Display({
     variable: "--font-playfair",
+    subsets: ["latin"],
+    display: "swap",
+});
+
+const alexBrush = Alex_Brush({
+    variable: "--font-alex",
+    weight: "400",
     subsets: ["latin"],
     display: "swap",
 });
@@ -26,7 +33,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
+            <body className={`${outfit.variable} ${playfair.variable} ${alexBrush.variable}`} suppressHydrationWarning>
                 {children}
             </body>
         </html>
